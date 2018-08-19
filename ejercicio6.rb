@@ -12,14 +12,14 @@ end
 
 module Attendance
   def student_quantity
-  p @@quantity
+  p "La cantidad de alumnos en el curso es #{quantity} "
   end
 end
 # Crear una clase Student con un método constructor que recibirá 3 argumentos
 # (nombre, nota1 y nota2). Cada una de las notas tendrá, por defecto, valor 4
 # en el caso que no se ingrese una nota al momento de crear una nueva instancia.
 class Student
-  include Attendance
+  extend Attendance
   include Test
   @grade1 = 4
   @grade2 = 4
@@ -34,15 +34,17 @@ attr_accessor :name, :grade1, :grade2
     @grade2= grade2
     @@quantity +=1
   end
+  def self.quantity
+    @@quantity
+  end
 end
-# Crear un módulo Test con un método result. Este método debe calcular el
+# Crear un modulo Test con un método result. Este método debe calcular el
 # promedio de 2 notas y si ese promedio es superior a 4 entregrar un mensaje
-# que debe decir "Estudiante aprobado". En caso contrario, enviará un mensaje
+# que debe decir "Estudiante aprobado". En caso contrario, enviara un mensaje
 # "Estudiante reprobado".
 
-
 # Crear un segundo módulo Attendance con un método student_quantity que
- #permita mostrar en pantalla la cantidad de estudiantes creados.
+# permita mostrar en pantalla la cantidad de estudiantes creados.
 # Añadir a la clase Student el módulo Test como métodos de instancia y el módulo
 # Attendance como métodos de clase.
 
@@ -57,7 +59,7 @@ Student.new('Rodolfo', 2.5, 1.3).result
 Student.new('Juana', 7, 6.5).result
 Student.new('Juanito', 7.9, 6.0).result
 
-# Crear 10 objetos de la clase Student y utilizar los métodos creados para
-#saber si los alumnos están aprobados o no y, finalmente, mostrar el total
+# Crear 10 objetos de la clase Student y utilizar los metodos creados para
+# saber si los alumnos están aprobados o no y, finalmente, mostrar el total
 # de alumnos creados.
 Student.student_quantity
